@@ -28,6 +28,6 @@ class AnalyticsVC: UICollectionViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tabBarController?.navigationItem.title = "Analítica"
+        self.tabBarController?.navigationItem.title = "Dashboard"
     }
 }

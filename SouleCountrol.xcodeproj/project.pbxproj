@@ -137,8 +137,8 @@
 		0B36E5CC2167EFC1004057F2 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				0B36E5CD2167F062004057F2 /* UIColor+hex.swift */,
 				0B36E5CF2168FFBA004057F2 /* ThemeColors.swift */,
+				0B36E5CD2167F062004057F2 /* UIColor+hex.swift */,
 				0B36E5D121690150004057F2 /* UIView+shadow.swift */,
 				0B36E5D3216901B8004057F2 /* UIView+anchors.swift */,
 				0B36E5DB21691C4A004057F2 /* UIView+gradient.swift */,

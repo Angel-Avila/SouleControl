@@ -12,7 +12,8 @@ class DeviceCell: GenericCell<Device> {
     
     override var item: Device! {
         didSet {
-            label.text = item.name
+            nameLabel.text = item.name
+            stateLabel.text = item.state
             setUI(fromDeviceType: item.type)
         }
     }
@@ -24,12 +25,21 @@ class DeviceCell: GenericCell<Device> {
         return iv
     }()
     
-    lazy var label: UILabel! = {
+    lazy var nameLabel: UILabel! = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: ".SFUIDisplay-Bold", size: 20)
         label.textColor = .white
-        label.numberOfLines = 2
+        label.numberOfLines = 1
+        return label
+    }()
+    
+    lazy var stateLabel: UILabel! = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont(name: ".SFUIDisplay-Regular", size: 17)
+        label.textColor = .white
+        label.numberOfLines = 1
         return label
     }()
     
@@ -42,8 +52,11 @@ class DeviceCell: GenericCell<Device> {
         contentView.layer.cornerRadius = cornerRadius
         UIView.giveStandardShadow(toView: contentView)
         
-        contentView.addSubview(label)
-        label.anchor(top: contentView.centerYAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: UIEdgeInsets(top: 4, left: 8, bottom: 0, right: 8))
+        contentView.addSubview(nameLabel)
+        nameLabel.anchor(top: contentView.centerYAnchor, leading: contentView.leadingAnchor, bottom: nil, trailing: contentView.trailingAnchor, padding: UIEdgeInsets(top: 4, left: 8, bottom: 0, right: 8))
+        
+        contentView.addSubview(stateLabel)
+        stateLabel.anchor(top: nil, leading: contentView.leadingAnchor, bottom: contentView.bottomAnchor, trailing: contentView.trailingAnchor, padding: UIEdgeInsets(top: 0, left: 8, bottom: 9, right: 8))
         
         let inset: CGFloat = 4
         contentView.addSubview(imageView)
@@ -67,7 +80,7 @@ class DeviceCell: GenericCell<Device> {
             contentView.setHorizontalGradient(color1: .lightSkyBlue, color2: .darkSkyBlue, withCornerRadius: cornerRadius)
             imageView.image = #imageLiteral(resourceName: "camera")
         case .door:
-            contentView.setHorizontalGradient(color1: .lightBrown, color2: .darkBrown, withCornerRadius: cornerRadius)
+            contentView.setHorizontalGradient(color1: .lightOrange, color2: .darkOrange, withCornerRadius: cornerRadius)
             imageView.image = #imageLiteral(resourceName: "door")
         case .extra:
             contentView.setHorizontalGradient(color1: .lightPurple, color2: .darkPurple, withCornerRadius: cornerRadius)

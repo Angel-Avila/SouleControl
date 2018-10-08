@@ -19,10 +19,12 @@ class Device {
     
     var name: String!
     var type: DeviceType!
+    var state: String!
     
-    init(name: String, type: DeviceType) {
+    init(name: String, type: DeviceType, state: String) {
         self.name = name
         self.type = type
+        self.state = state
     }
     
 }

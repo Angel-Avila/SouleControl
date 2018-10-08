@@ -48,7 +48,7 @@ class GenericCollectionViewController<T: GenericCell<U>, U>: UIViewController, U
             
             collectionView.setCollectionViewLayout(flowLayout, animated: false)
             
-            collectionView.anchorSize(size: CGSize(width: 0, height: height + verticalSpacing * 2))
+            collectionView.anchorSize(size: CGSize(width: 0, height: 10 + height + verticalSpacing * 2))
             collectionView.showsHorizontalScrollIndicator = false
             
             collectionView.tag = i
