@@ -10,13 +10,22 @@ import UIKit
 
 class DevicesVC: GenericCollectionViewController<DeviceCell, Device>, UIGestureRecognizerDelegate {
 
-    let devices = [[Device(name: "Foco 1", type: .light, state: "Prendido"), Device(name: "Foco 2", type: .light, state: "Apagado")],
+    let devices = [[Device(name: "Foco 1", type: .light, isOn: true),
+                    Device(name: "Foco 2", type: .light)
+                    ],
                    
-                   [Device(name: "Foco", type: .light, state: "Apagado"), Device(name: "Termómetro", type: .extra, state: "28°C")],
+                   [Device(name: "Foco", type: .light),
+                    Device(name: "Termómetro", type: .extra, state: "28°C")
+                    ],
                    
-                   [Device(name: "Cámara", type: .camera, state: "Apagada"), Device(name: "Puerta principal", type: .door, state: "Cerrada"), Device(name: "Foco exterior", type: .light, state: "Prendido"), Device(name: "Foco interior", type: .light, state: "Apagado")],
+                   [Device(name: "Cámara", type: .camera, isOn: true),
+                    Device(name: "Puerta principal", type: .door),
+                    Device(name: "Foco exterior", type: .light, isOn: true),
+                    Device(name: "Foco interior", type: .light)
+                    ],
                    
-                   [Device(name: "Puerta del cuarto", type: .door, state: "Abierta"), Device(name: "Foco", type: .light, state: "Apagado")]]
+                   [Device(name: "Puerta del cuarto", type: .door, isOn: true),
+                    Device(name: "Foco", type: .light)]]
     
     let scrollView = ScrollView()
     
@@ -42,6 +51,23 @@ class DevicesVC: GenericCollectionViewController<DeviceCell, Device>, UIGestureR
         super.viewDidLoad()
   
         setupViews()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.navigationItem.title = "Dispositivos"
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! DeviceCell
+        
+        let device = items[collectionView.tag][indexPath.row]
+        device.isOn = !device.isOn
+        
+        cell.item = device
+        cell.updateUI()
+        
+        collectionView.reloadItems(at: [indexPath])
     }
     
     fileprivate func setupViews() {
@@ -94,15 +120,6 @@ class DevicesVC: GenericCollectionViewController<DeviceCell, Device>, UIGestureR
     
     fileprivate func anchorBottomCollectionView() {
         guard let collectionView = collectionViews.last else { return }
-        print(collectionView == bedroomCollectionView)
         collectionView.anchor(top: nil, leading: nil, bottom: scrollView.bottomAnchor, trailing: nil, padding: UIEdgeInsets(top: 0, left: 0, bottom: 30, right: 0))
     }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.tabBarController?.navigationItem.title = "Dispositivos"
-    }
-    
-
-    
 }

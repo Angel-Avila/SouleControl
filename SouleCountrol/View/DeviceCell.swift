@@ -12,9 +12,22 @@ class DeviceCell: GenericCell<Device> {
     
     override var item: Device! {
         didSet {
+            var stateText = ""
+            
+            switch item.type! {
+            case .door:
+                stateText = item.isOn ? DoorState.on.rawValue : DoorState.off.rawValue
+            case .light:
+                stateText = item.isOn ? LightState.on.rawValue : LightState.off.rawValue
+            case .camera:
+                stateText = item.isOn ? CameraState.on.rawValue : CameraState.off.rawValue
+            default:
+                stateText = item.state
+            }
+            
             nameLabel.text = item.name
-            stateLabel.text = item.state
-            setUI(fromDeviceType: item.type)
+            stateLabel.text = stateText
+            setUI(fromDeviceType: item.type, andState: item.isOn)
         }
     }
     
@@ -71,21 +84,72 @@ class DeviceCell: GenericCell<Device> {
         fatalError("init(coder:) has not been implemented")
     }
     
-    fileprivate func setUI(fromDeviceType type: DeviceType) {
+    override var isHighlighted: Bool {
+        didSet { bounce(isHighlighted) }
+    }
+    
+    func bounce(_ bounce: Bool) {
+        UIView.animate(
+            withDuration: 0.8,
+            delay: 0,
+            usingSpringWithDamping: 0.4,
+            initialSpringVelocity: 0.8,
+            options: [.allowUserInteraction, .beginFromCurrentState],
+            animations: { self.transform = bounce ? CGAffineTransform(scaleX: 0.95, y: 0.95) : .identity },
+            completion: nil)
+    }
+    
+    fileprivate func setUI(fromDeviceType type: DeviceType, andState isOn: Bool) {
+        let lightGray1 = UIColor(white: 0.8, alpha: 1)
+//        let lightGray2 = UIColor(white: 0.7, alpha: 1)
+        
         switch type {
+            
         case .light:
-            contentView.setHorizontalGradient(color1: .lightYellow, color2: .darkYellow, withCornerRadius: cornerRadius)
-            imageView.image = #imageLiteral(resourceName: "lightbulb")
+            
+            if isOn {
+//                contentView.setHorizontalGradient(color1: .lightYellow, color2: .darkYellow, withCornerRadius: cornerRadius)
+                contentView.backgroundColor = .lightYellow
+                imageView.image = #imageLiteral(resourceName: "lightbulb")
+            } else {
+//                contentView.setHorizontalGradient(color1: lightGray1, color2: lightGray2, withCornerRadius: cornerRadius)
+                contentView.backgroundColor = lightGray1
+                imageView.image = #imageLiteral(resourceName: "lightbulb")
+            }
+            
         case .camera:
-            contentView.setHorizontalGradient(color1: .lightSkyBlue, color2: .darkSkyBlue, withCornerRadius: cornerRadius)
-            imageView.image = #imageLiteral(resourceName: "camera")
+            
+            if isOn {
+//                contentView.setHorizontalGradient(color1: .lightSkyBlue, color2: .darkSkyBlue, withCornerRadius: cornerRadius)
+                contentView.backgroundColor = .lightSkyBlue
+                imageView.image = #imageLiteral(resourceName: "camera")
+            } else {
+//                contentView.setHorizontalGradient(color1: lightGray1, color2: lightGray2, withCornerRadius: cornerRadius)
+                contentView.backgroundColor = lightGray1
+                imageView.image = #imageLiteral(resourceName: "camera")
+            }
+
         case .door:
-            contentView.setHorizontalGradient(color1: .lightOrange, color2: .darkOrange, withCornerRadius: cornerRadius)
-            imageView.image = #imageLiteral(resourceName: "door")
+            
+            if isOn {
+//                contentView.setHorizontalGradient(color1: .lightOrange, color2: .darkOrange, withCornerRadius: cornerRadius)
+                contentView.backgroundColor = .lightOrange
+                imageView.image = #imageLiteral(resourceName: "door")
+            } else {
+//                contentView.setHorizontalGradient(color1: lightGray1, color2: lightGray2, withCornerRadius: cornerRadius)
+                contentView.backgroundColor = lightGray1
+                imageView.image = #imageLiteral(resourceName: "door")
+            }
+
         case .extra:
-            contentView.setHorizontalGradient(color1: .lightPurple, color2: .darkPurple, withCornerRadius: cornerRadius)
+//            contentView.setHorizontalGradient(color1: .lightPurple, color2: .darkPurple, withCornerRadius: cornerRadius)
+            contentView.backgroundColor = .lightPurple
             imageView.image = #imageLiteral(resourceName: "random")
         }
+    }
+    
+    func updateUI() {
+        setUI(fromDeviceType: item.type, andState: item.isOn)
     }
     
 }

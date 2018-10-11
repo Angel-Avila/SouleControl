@@ -75,6 +75,10 @@ class GenericCollectionViewController<T: GenericCell<U>, U>: UIViewController, U
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+    }
 
     // MARK: UICollectionViewDelegate
 

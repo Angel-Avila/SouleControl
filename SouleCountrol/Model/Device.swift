@@ -15,16 +15,33 @@ enum DeviceType {
     case extra
 }
 
+enum DoorState: String {
+    case on = "Abierta"
+    case off = "Cerrada"
+}
+
+enum CameraState: String {
+    case on = "Transmitiendo"
+    case off = "Apagada"
+}
+
+enum LightState: String {
+    case on = "Prendido"
+    case off = "Apagado"
+}
+
 class Device {
     
     var name: String!
     var type: DeviceType!
     var state: String!
+    var isOn: Bool!
     
-    init(name: String, type: DeviceType, state: String) {
+    init(name: String, type: DeviceType, state: String = "-", isOn: Bool = false) {
         self.name = name
         self.type = type
         self.state = state
+        self.isOn = isOn
     }
     
 }
