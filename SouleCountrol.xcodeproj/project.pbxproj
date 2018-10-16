@@ -26,6 +26,11 @@
 		0B36E5DA2169126A004057F2 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B36E5D92169126A004057F2 /* CollectionView.swift */; };
 		0B36E5DC21691C4A004057F2 /* UIView+gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B36E5DB21691C4A004057F2 /* UIView+gradient.swift */; };
 		0B36E5DE21691E32004057F2 /* ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B36E5DD21691E32004057F2 /* ScrollView.swift */; };
+		0B52DCC1217002D400B2B486 /* UIButton+floating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B52DCC0217002D300B2B486 /* UIButton+floating.swift */; };
+		0B52DCC3217006B200B2B486 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B52DCC2217006B200B2B486 /* Utils.swift */; };
+		0B52DCC52170082B00B2B486 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B52DCC42170082B00B2B486 /* Person.swift */; };
+		0B52DCC7217008F900B2B486 /* PersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B52DCC6217008F900B2B486 /* PersonCell.swift */; };
+		0B52DCC92170094F00B2B486 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B52DCC82170094F00B2B486 /* Label.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +55,11 @@
 		0B36E5D92169126A004057F2 /* CollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 		0B36E5DB21691C4A004057F2 /* UIView+gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+gradient.swift"; sourceTree = "<group>"; };
 		0B36E5DD21691E32004057F2 /* ScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollView.swift; sourceTree = "<group>"; };
+		0B52DCC0217002D300B2B486 /* UIButton+floating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+floating.swift"; sourceTree = "<group>"; };
+		0B52DCC2217006B200B2B486 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		0B52DCC42170082B00B2B486 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		0B52DCC6217008F900B2B486 /* PersonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCell.swift; sourceTree = "<group>"; };
+		0B52DCC82170094F00B2B486 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +132,8 @@
 				0B36E5D92169126A004057F2 /* CollectionView.swift */,
 				0B36E5D721690BEE004057F2 /* HeaderView.swift */,
 				0B36E5DD21691E32004057F2 /* ScrollView.swift */,
+				0B52DCC6217008F900B2B486 /* PersonCell.swift */,
+				0B52DCC82170094F00B2B486 /* Label.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -130,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				0B36E5CA2166CCE9004057F2 /* Device.swift */,
+				0B52DCC42170082B00B2B486 /* Person.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -137,11 +150,13 @@
 		0B36E5CC2167EFC1004057F2 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				0B52DCC2217006B200B2B486 /* Utils.swift */,
 				0B36E5CF2168FFBA004057F2 /* ThemeColors.swift */,
 				0B36E5CD2167F062004057F2 /* UIColor+hex.swift */,
 				0B36E5D121690150004057F2 /* UIView+shadow.swift */,
 				0B36E5D3216901B8004057F2 /* UIView+anchors.swift */,
 				0B36E5DB21691C4A004057F2 /* UIView+gradient.swift */,
+				0B52DCC0217002D300B2B486 /* UIButton+floating.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -220,18 +235,23 @@
 				0B36E5BB2166698A004057F2 /* TabBarController.swift in Sources */,
 				0B36E5DC21691C4A004057F2 /* UIView+gradient.swift in Sources */,
 				0B36E5BD2166B687004057F2 /* AnalyticsVC.swift in Sources */,
+				0B52DCC92170094F00B2B486 /* Label.swift in Sources */,
 				0B36E5AB216666D8004057F2 /* DevicesVC.swift in Sources */,
 				0B36E5CB2166CCE9004057F2 /* Device.swift in Sources */,
+				0B52DCC7217008F900B2B486 /* PersonCell.swift in Sources */,
 				0B36E5C82166CCC1004057F2 /* DeviceCell.swift in Sources */,
 				0B36E5DA2169126A004057F2 /* CollectionView.swift in Sources */,
 				0B36E5DE21691E32004057F2 /* ScrollView.swift in Sources */,
 				0B36E5A9216666D8004057F2 /* AppDelegate.swift in Sources */,
+				0B52DCC52170082B00B2B486 /* Person.swift in Sources */,
 				0B36E5D4216901B8004057F2 /* UIView+anchors.swift in Sources */,
 				0B36E5C22166CA56004057F2 /* GenericCollectionViewController.swift in Sources */,
 				0B36E5D821690BEE004057F2 /* HeaderView.swift in Sources */,
 				0B36E5CE2167F062004057F2 /* UIColor+hex.swift in Sources */,
 				0B36E5D02168FFBA004057F2 /* ThemeColors.swift in Sources */,
+				0B52DCC1217002D400B2B486 /* UIButton+floating.swift in Sources */,
 				0B36E5BF2166B696004057F2 /* SecurityVC.swift in Sources */,
+				0B52DCC3217006B200B2B486 /* Utils.swift in Sources */,
 				0B36E5C42166CABB004057F2 /* GenericCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
