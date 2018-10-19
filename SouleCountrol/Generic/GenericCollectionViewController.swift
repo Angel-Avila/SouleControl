@@ -29,33 +29,41 @@ class GenericCollectionViewController<T: GenericCell<U>, U>: UIViewController, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupCollectionViews()
+    }
+    
+    fileprivate func setupCollectionViews() {
         for (i, collectionView) in collectionViews.enumerated() {
             collectionView.register(T.self, forCellWithReuseIdentifier: reuseIdentifier)
-            
-            let flowLayout = UICollectionViewFlowLayout()
             
             let verticalSpacing: CGFloat = 8
             let horizontalSpacing: CGFloat = 16
             let width: CGFloat = screenWidth / 2
             let height: CGFloat = AppDelegate.cellHeight
+            let inset: CGFloat = 20
             
-            flowLayout.itemSize = CGSize(width: width, height: height)
-            flowLayout.minimumInteritemSpacing = horizontalSpacing
-            flowLayout.minimumLineSpacing = horizontalSpacing
-            flowLayout.scrollDirection = .horizontal
-            flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
-            
-            collectionView.setCollectionViewLayout(flowLayout, animated: false)
+            setupFlowLayout(forCollectionView: collectionView, width: width, height: height, spacing: horizontalSpacing, inset: inset)
             
             collectionView.anchorSize(size: CGSize(width: 0, height: 10 + height + verticalSpacing * 2))
             collectionView.showsHorizontalScrollIndicator = false
             
             collectionView.tag = i
-            
+
             collectionView.delegate = self
             collectionView.dataSource = self
         }
+    }
+    
+    fileprivate func setupFlowLayout(forCollectionView collectionView: UICollectionView, width: CGFloat, height: CGFloat, spacing: CGFloat, inset: CGFloat) {
+        
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.itemSize = CGSize(width: width, height: height)
+        flowLayout.minimumInteritemSpacing = spacing
+        flowLayout.minimumLineSpacing = spacing
+        flowLayout.scrollDirection = .horizontal
+        flowLayout.sectionInset = UIEdgeInsets(top: 0, left: inset, bottom: 0, right: inset)
+        
+        collectionView.setCollectionViewLayout(flowLayout, animated: false)
     }
 
     // MARK: UICollectionViewDataSource
