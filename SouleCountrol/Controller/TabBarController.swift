@@ -16,7 +16,7 @@ class TabBarController: UITabBarController {
         let devicesVC = DevicesVC(screenWidth: view.bounds.width)
         devicesVC.tabBarItem = UITabBarItem(title: "Dispositivos", image: #imageLiteral(resourceName: "home"), tag: 0)
         
-        let analyticsVC = AnalyticsVC()
+        let analyticsVC = AnalyticsVC(screenWidth: view.bounds.width)
         analyticsVC.tabBarItem = UITabBarItem(title: "Dashboard", image: #imageLiteral(resourceName: "dashboard"), tag: 1)
         
         let securityVC = SecurityVC()

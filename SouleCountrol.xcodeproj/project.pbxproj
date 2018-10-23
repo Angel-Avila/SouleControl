@@ -31,6 +31,10 @@
 		0B52DCC52170082B00B2B486 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B52DCC42170082B00B2B486 /* Person.swift */; };
 		0B52DCC7217008F900B2B486 /* PersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B52DCC6217008F900B2B486 /* PersonCell.swift */; };
 		0B52DCC92170094F00B2B486 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B52DCC82170094F00B2B486 /* Label.swift */; };
+		0B864A5F217E6D4800394CDC /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B864A5E217E6D4800394CDC /* Database.swift */; };
+		0B864A61217E6F9A00394CDC /* Bulb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B864A60217E6F9A00394CDC /* Bulb.swift */; };
+		0B864A63217E717200394CDC /* ArrivalHour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B864A62217E717200394CDC /* ArrivalHour.swift */; };
+		0B864A65217E71BA00394CDC /* Cam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B864A64217E71BA00394CDC /* Cam.swift */; };
 		9D1381A4BB904CA174868FA2 /* Pods_SouleCountrol.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87DCA289CA738DD8E864FB5D /* Pods_SouleCountrol.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +65,10 @@
 		0B52DCC42170082B00B2B486 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		0B52DCC6217008F900B2B486 /* PersonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCell.swift; sourceTree = "<group>"; };
 		0B52DCC82170094F00B2B486 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
+		0B864A5E217E6D4800394CDC /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		0B864A60217E6F9A00394CDC /* Bulb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bulb.swift; sourceTree = "<group>"; };
+		0B864A62217E717200394CDC /* ArrivalHour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrivalHour.swift; sourceTree = "<group>"; };
+		0B864A64217E71BA00394CDC /* Cam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cam.swift; sourceTree = "<group>"; };
 		1E29CBA7FF3C21A30F5B3E9F /* Pods-SouleCountrol.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SouleCountrol.release.xcconfig"; path = "Pods/Target Support Files/Pods-SouleCountrol/Pods-SouleCountrol.release.xcconfig"; sourceTree = "<group>"; };
 		63844487B3AD13171A03DA64 /* Pods-SouleCountrol.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SouleCountrol.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SouleCountrol/Pods-SouleCountrol.debug.xcconfig"; sourceTree = "<group>"; };
 		87DCA289CA738DD8E864FB5D /* Pods_SouleCountrol.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SouleCountrol.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -151,6 +159,9 @@
 			children = (
 				0B36E5CA2166CCE9004057F2 /* Device.swift */,
 				0B52DCC42170082B00B2B486 /* Person.swift */,
+				0B864A60217E6F9A00394CDC /* Bulb.swift */,
+				0B864A62217E717200394CDC /* ArrivalHour.swift */,
+				0B864A64217E71BA00394CDC /* Cam.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -172,6 +183,7 @@
 		0B864A5D217E6BC800394CDC /* Database */ = {
 			isa = PBXGroup;
 			children = (
+				0B864A5E217E6D4800394CDC /* Database.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -321,11 +333,15 @@
 				0B36E5C22166CA56004057F2 /* GenericCollectionViewController.swift in Sources */,
 				0B36E5D821690BEE004057F2 /* HeaderView.swift in Sources */,
 				0B36E5CE2167F062004057F2 /* UIColor+hex.swift in Sources */,
+				0B864A63217E717200394CDC /* ArrivalHour.swift in Sources */,
 				0B36E5D02168FFBA004057F2 /* ThemeColors.swift in Sources */,
+				0B864A61217E6F9A00394CDC /* Bulb.swift in Sources */,
 				0B52DCC1217002D400B2B486 /* UIButton+floating.swift in Sources */,
 				0B36E5BF2166B696004057F2 /* SecurityVC.swift in Sources */,
 				0B52DCC3217006B200B2B486 /* Utils.swift in Sources */,
 				0B36E5C42166CABB004057F2 /* GenericCell.swift in Sources */,
+				0B864A5F217E6D4800394CDC /* Database.swift in Sources */,
+				0B864A65217E71BA00394CDC /* Cam.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,7 +483,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PX5B7972N5;
 				INFOPLIST_FILE = SouleCountrol/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Angel-Avila.SouleCountrol";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -483,7 +502,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PX5B7972N5;
 				INFOPLIST_FILE = SouleCountrol/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Angel-Avila.SouleCountrol";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
