@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DeviceCell: GenericCell<Device> {
+class DeviceCell: GenericCollectionViewCell<Device> {
     
     override var item: Device! {
         didSet {

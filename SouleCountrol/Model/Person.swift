@@ -11,12 +11,13 @@ import UIKit
 class Person {
     
     var name: String!
-    var role: String!
+    var role: String = ""
+    var hoursArrivedAt = [Double]()
     
     var image = #imageLiteral(resourceName: "person")
     
-    init(name: String, role: String) {
+    init(name: String, role: String = "") {
         self.name = name
-        self.role = role
+        self.role = ""
     }
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GenericCollectionViewController<T: GenericCell<U>, U>: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class GenericCollectionViewController<T: GenericCollectionViewCell<U>, U>: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     // MARK: - Vars
     
@@ -18,8 +18,17 @@ class GenericCollectionViewController<T: GenericCell<U>, U>: UIViewController, U
     
     var screenWidth: CGFloat!
     
+    var width: CGFloat!
+    var height: CGFloat!
+    var inset: CGFloat!
+    
+    
     init(screenWidth: CGFloat) {
         self.screenWidth = screenWidth
+        width = screenWidth / 2
+        height = AppDelegate.cellHeight
+        inset = 20
+        
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -38,10 +47,7 @@ class GenericCollectionViewController<T: GenericCell<U>, U>: UIViewController, U
             
             let verticalSpacing: CGFloat = 8
             let horizontalSpacing: CGFloat = 16
-            let width: CGFloat = screenWidth / 2
-            let height: CGFloat = AppDelegate.cellHeight
-            let inset: CGFloat = 20
-            
+
             setupFlowLayout(forCollectionView: collectionView, width: width, height: height, spacing: horizontalSpacing, inset: inset)
             
             collectionView.anchorSize(size: CGSize(width: 0, height: 10 + height + verticalSpacing * 2))

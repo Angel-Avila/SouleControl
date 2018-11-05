@@ -8,14 +8,20 @@
 
 import UIKit
 
-class PersonCell: UITableViewCell {
+class PersonTableViewCell: UITableViewCell {
     
     var person: Person? {
         didSet {
             guard let person = person else { return }
             titleLabel.text = person.name
-            detailLabel.text = person.role
             personImageView.image = person.image
+            
+            guard let last = person.hoursArrivedAt.last else { return }
+            
+            let lastArrival = Date(timeIntervalSince1970: last)
+            let f = DateFormatter()
+            f.dateFormat = "hh:mm a dd/MM/yyyy"
+            detailLabel.text = "Última llegada: " + f.string(from: lastArrival)
         }
     }
     
@@ -39,7 +45,7 @@ class PersonCell: UITableViewCell {
     }()
     
     lazy var detailLabel: UILabel! = {
-        let label = Label(labelText: "-", size: 17, textColor: detailColor)
+        let label = Label(labelText: "Última llegada: -", size: 17, textColor: detailColor)
         label.numberOfLines = 1
         label.textAlignment = .left
         return label

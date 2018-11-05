@@ -86,7 +86,7 @@ class SecurityVC: UITableViewController {
     // MARK: - Setup
     
     fileprivate func setupTableView() {
-        tableView.register(PersonCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(PersonTableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
         tableView.tableFooterView = UIView()
     }
@@ -114,7 +114,7 @@ extension SecurityVC {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! PersonCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! PersonTableViewCell
         cell.accessoryType = .disclosureIndicator
         cell.person = people[indexPath.row]
         return cell

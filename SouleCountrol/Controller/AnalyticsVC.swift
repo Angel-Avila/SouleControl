@@ -8,11 +8,10 @@
 
 import UIKit
 
-class AnalyticsVC: GenericCollectionViewController<DeviceCell, Device>, UIGestureRecognizerDelegate {
+class AnalyticsVC: GenericCollectionViewController<PersonCollectionViewCell, Person>, UIGestureRecognizerDelegate {
     
-    let devices = [[Device(name: "Foco 1", type: .light, isOn: true),
-                    Device(name: "Foco 2", type: .light)
-                   ]]
+    var people = [Person(name: "Ángel Ávila", role: "Familia"),
+                  Person(name: "Sergio Chung", role: "Vagabundo")]
     
     let scrollView = ScrollView()
     
@@ -42,29 +41,42 @@ class AnalyticsVC: GenericCollectionViewController<DeviceCell, Device>, UIGestur
     override func viewDidLoad() {
         view.backgroundColor = .white
         collectionViews = [arrivalHoursCollectionView]
-        items = devices
+        people.first!.image = #imageLiteral(resourceName: "angel")
+        people.first!.hoursArrivedAt = [1540008000, 1540204030]
+        items = [people]
+        
+        width = (screenWidth * 1) / 2
+        height = AppDelegate.cellHeight * 2
+        inset = 20
         
         super.viewDidLoad()
         
         setupViews()
-        
-        Database.instance.getAllArrivalHours { hours in
-            guard let hours = hours else { print("no rifa"); return }
-            print("Arrival Hours -------------------")
-            for hour in hours {
-                print(hour.person ?? "nil")
-                print(hour.hour ?? "nil")
-            }
-        }
-        
-        Database.instance.getAllCams { cams in
-            guard let cams = cams else { return }
-            
-            let minutes = cams.map { $0.minutesOn ?? 0 }
-            let sum = minutes.reduce(0, +)
-            self.camMinutesOnLabel.text = "Minutos encendida: " + String(sum)
-        }
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.navigationItem.title = "Dashboard"
+        downloadInfoFromServer()
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let person = people[indexPath.row]
+        let arrivalHourVC = ArrivalHourVC()
+        arrivalHourVC.person = person
+        arrivalHourVC.title = person.name
+        let nc = UINavigationController(rootViewController: arrivalHourVC)
+        nc.navigationBar.prefersLargeTitles = true
+        present(nc, animated: true, completion: nil)
+    }
+    
+    fileprivate func downloadInfoFromServer() {
+        downloadBulbsInfo()
+        downloadCamsInfo()
+        downloadArrivalHoursInfo()
+    }
+    
+    fileprivate func downloadBulbsInfo() {
         Database.instance.getAllBulbs { bulbs in
             guard let bulbs = bulbs else { return }
             
@@ -74,9 +86,27 @@ class AnalyticsVC: GenericCollectionViewController<DeviceCell, Device>, UIGestur
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.tabBarController?.navigationItem.title = "Dashboard"
+    fileprivate func downloadCamsInfo() {
+        Database.instance.getAllCams { cams in
+            guard let cams = cams else { return }
+            
+            let minutes = cams.map { $0.minutesOn ?? 0 }
+            let sum = minutes.reduce(0, +)
+            self.camMinutesOnLabel.text = "Minutos encendida: " + String(sum)
+        }
+    }
+    
+    fileprivate func downloadArrivalHoursInfo() {
+        Database.instance.getAllArrivalHours { hours in
+            guard let hours = hours else { print("no rifa"); return }
+           
+            for p in self.people {
+                p.hoursArrivedAt = hours.filter { $0.person == p.name }.map { $0.hour ?? 0 }
+                p.hoursArrivedAt = p.hoursArrivedAt.sorted { (a, b) -> Bool in
+                    return a > b
+                }
+            }
+        }
     }
     
     fileprivate func setupViews() {
