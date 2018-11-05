@@ -23,8 +23,8 @@ class SecurityVC: UITableViewController {
     
 //    let addPersonPopup = TextPopup(title: "Nueva cita", description: "Agregue el título de su cita")
     
-    var people = [Person(name: "Ángel Ávila", role: "Familia"),
-                  Person(name: "Sergio Chung", role: "Vagabundo")]
+    var people = [Person(name: "Ángel Ávila"),
+                  Person(name: "Sergio Chung")]
     
     override func viewDidLoad() {
         super.viewDidLoad()

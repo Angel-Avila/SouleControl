@@ -7,6 +7,11 @@
 //
 
 import UIKit
+import AWSCore
+import AWSCognitoIdentityProvider
+import AWSS3
+
+let userPoolID = "us-west-2_vQOuGdjC1"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,6 +19,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     static let cellHeight: CGFloat = 120
+    
+    class func defaultUserPool() -> AWSCognitoIdentityUserPool {
+        return AWSCognitoIdentityUserPool(forKey: userPoolID)
+    }
+    
+    var cognitoConfig:CognitoConfig?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -23,31 +34,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = nc
         window?.makeKeyAndVisible()
         
+        AWSDDLog.sharedInstance.logLevel = .verbose
+        AWSDDLog.add(AWSDDTTYLogger.sharedInstance)
+
+        cognitoConfig = CognitoConfig()
+        setupCognitoUserPool()
+        
         return true
     }
-
-    func applicationWillResignActive(_ application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+    
+    func setupCognitoUserPool() {
+        let clientId:String = self.cognitoConfig!.getClientId()
+        let poolId:String = self.cognitoConfig!.getPoolId()
+        let region:AWSRegionType = self.cognitoConfig!.getRegion()
+        
+        let credentialsProvider = AWSCognitoCredentialsProvider(regionType:.USWest2,
+                                                                identityPoolId:"us-west-2:3d6f7551-7dfd-48dd-bda0-9c0fd63df37f")
+        let serviceConfiguration:AWSServiceConfiguration = AWSServiceConfiguration(region: region, credentialsProvider: credentialsProvider)
+        
+        AWSServiceManager.default()?.defaultServiceConfiguration = serviceConfiguration
+        AWSS3.register(with: serviceConfiguration, forKey: "defaultKey")
+        
+        let cognitoConfiguration:AWSCognitoIdentityUserPoolConfiguration = AWSCognitoIdentityUserPoolConfiguration(clientId: clientId, clientSecret: nil, poolId: poolId)
+        AWSCognitoIdentityUserPool.register(with: serviceConfiguration, userPoolConfiguration: cognitoConfiguration, forKey: userPoolID)
+        
+        let pool:AWSCognitoIdentityUserPool = AppDelegate.defaultUserPool()
+        
+        let user = pool.getUser("angel")
+        user.getSession("angel", password: "hola12", validationData: nil).continueOnSuccessWith { identitySession -> Any? in
+            print("-------------------------")
+        }
     }
-
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    }
-
-    func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-    }
-
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    }
-
-    func applicationWillTerminate(_ application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    }
-
-
 }
-

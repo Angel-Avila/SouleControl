@@ -1,16 +1,58 @@
 PODS:
   - Alamofire (4.7.3)
+  - AWSCognitoIdentityProvider (2.6.29):
+    - AWSCognitoIdentityProviderASF (= 1.0.1)
+    - AWSCore (= 2.6.29)
+  - AWSCognitoIdentityProviderASF (1.0.1)
+  - AWSCore (2.6.29)
+  - AWSEC2 (2.6.29):
+    - AWSCore (= 2.6.29)
+  - AWSKinesis (2.6.29):
+    - AWSCore (= 2.6.29)
+  - AWSKinesisVideo (2.6.29):
+    - AWSCore (= 2.6.29)
+  - AWSMobileAnalytics (2.6.29):
+    - AWSCore (= 2.6.29)
+  - AWSPinpoint (2.6.29):
+    - AWSCore (= 2.6.29)
+  - AWSS3 (2.6.29):
+    - AWSCore (= 2.6.29)
 
 DEPENDENCIES:
   - Alamofire
+  - AWSCognitoIdentityProvider
+  - AWSEC2
+  - AWSKinesis
+  - AWSKinesisVideo
+  - AWSMobileAnalytics
+  - AWSPinpoint
+  - AWSS3
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - AWSCognitoIdentityProvider
+    - AWSCognitoIdentityProviderASF
+    - AWSCore
+    - AWSEC2
+    - AWSKinesis
+    - AWSKinesisVideo
+    - AWSMobileAnalytics
+    - AWSPinpoint
+    - AWSS3
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  AWSCognitoIdentityProvider: 7bcc36c35e3598d283ad376b4bb9859beaff5ecc
+  AWSCognitoIdentityProviderASF: f94f1a502e72ef3d0a1de93e10bf7a79c8698118
+  AWSCore: cef664649db38b1cfc43d5669baa95d6479f0e21
+  AWSEC2: e216dd90df00ec655e5225575b8ab5dc96761e10
+  AWSKinesis: b36914d185b84a805c41c088c195a6c91e804f75
+  AWSKinesisVideo: e53ea95d7560d6eb21d53497481b83d73bec6ee4
+  AWSMobileAnalytics: fd2e50b6d90a23d0375e6dbe8b087b5758e802fb
+  AWSPinpoint: acdb2b9ffb5f115ced6c3d1e90e94d1e90690d8b
+  AWSS3: f290faf13e491ff916715cf3e1a872719b114512
 
-PODFILE CHECKSUM: aa1b70518048d6d0d09bd813b3566a283dbd38df
+PODFILE CHECKSUM: a44cf8e8750bc63d15d26304cfeecaa6826a7fea
 
 COCOAPODS: 1.5.3

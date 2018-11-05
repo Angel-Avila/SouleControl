@@ -7,5 +7,12 @@ target 'SouleCountrol' do
 
   # Pods for SouleCountrol
   pod 'Alamofire'
+  pod 'AWSEC2'
+  pod 'AWSKinesis'
+  pod 'AWSMobileAnalytics'
+  pod 'AWSS3'
+  pod 'AWSKinesisVideo'
+  pod 'AWSCognitoIdentityProvider'
+  pod 'AWSPinpoint'
 
 end

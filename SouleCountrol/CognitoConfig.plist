@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>region</key>
+	<string>us-west-2</string>
+	<key>clientId</key>
+	<string>2acvi1phebfmjrodq2jbcau1kr</string>
+	<key>poolId</key>
+	<string>us-west-2_vQOuGdjC1</string>
+</dict>
+</plist>

@@ -143,9 +143,27 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/AWSCognitoIdentityProvider/AWSCognitoIdentityProvider.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AWSCognitoIdentityProviderASF/AWSCognitoIdentityProviderASF.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AWSCore/AWSCore.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AWSEC2/AWSEC2.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AWSKinesis/AWSKinesis.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AWSKinesisVideo/AWSKinesisVideo.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AWSMobileAnalytics/AWSMobileAnalytics.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AWSPinpoint/AWSPinpoint.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AWSS3/AWSS3.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/AWSCognitoIdentityProvider/AWSCognitoIdentityProvider.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AWSCognitoIdentityProviderASF/AWSCognitoIdentityProviderASF.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AWSCore/AWSCore.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AWSEC2/AWSEC2.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AWSKinesis/AWSKinesis.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AWSKinesisVideo/AWSKinesisVideo.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AWSMobileAnalytics/AWSMobileAnalytics.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AWSPinpoint/AWSPinpoint.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AWSS3/AWSS3.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then

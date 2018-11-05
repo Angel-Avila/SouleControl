@@ -40,6 +40,9 @@
 		0BD62746217FEEE400BEFADF /* GenericTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD62745217FEEE400BEFADF /* GenericTableViewController.swift */; };
 		0BD62748217FEFFF00BEFADF /* ArrivalHourVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD62747217FEFFF00BEFADF /* ArrivalHourVC.swift */; };
 		0BD6274A217FF04000BEFADF /* StringCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD62749217FF04000BEFADF /* StringCell.swift */; };
+		0BD9A43F2190EAA8009B3C28 /* CognitoConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0BD9A43E2190EAA8009B3C28 /* CognitoConfig.plist */; };
+		0BD9A4412190ECAC009B3C28 /* CognitoConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD9A4402190ECAC009B3C28 /* CognitoConfig.swift */; };
+		0BD9A4432190F479009B3C28 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD9A4422190F479009B3C28 /* LoginViewController.swift */; };
 		9D1381A4BB904CA174868FA2 /* Pods_SouleCountrol.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87DCA289CA738DD8E864FB5D /* Pods_SouleCountrol.framework */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +82,9 @@
 		0BD62745217FEEE400BEFADF /* GenericTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTableViewController.swift; sourceTree = "<group>"; };
 		0BD62747217FEFFF00BEFADF /* ArrivalHourVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrivalHourVC.swift; sourceTree = "<group>"; };
 		0BD62749217FF04000BEFADF /* StringCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringCell.swift; sourceTree = "<group>"; };
+		0BD9A43E2190EAA8009B3C28 /* CognitoConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = CognitoConfig.plist; sourceTree = "<group>"; };
+		0BD9A4402190ECAC009B3C28 /* CognitoConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CognitoConfig.swift; sourceTree = "<group>"; };
+		0BD9A4422190F479009B3C28 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1E29CBA7FF3C21A30F5B3E9F /* Pods-SouleCountrol.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SouleCountrol.release.xcconfig"; path = "Pods/Target Support Files/Pods-SouleCountrol/Pods-SouleCountrol.release.xcconfig"; sourceTree = "<group>"; };
 		63844487B3AD13171A03DA64 /* Pods-SouleCountrol.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SouleCountrol.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SouleCountrol/Pods-SouleCountrol.debug.xcconfig"; sourceTree = "<group>"; };
 		87DCA289CA738DD8E864FB5D /* Pods_SouleCountrol.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SouleCountrol.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,9 +130,11 @@
 				0B36E5C62166CC4C004057F2 /* View */,
 				0B36E5C92166CCD2004057F2 /* Model */,
 				0B36E5A8216666D8004057F2 /* AppDelegate.swift */,
+				0BD9A4402190ECAC009B3C28 /* CognitoConfig.swift */,
 				0B36E5AF216666D9004057F2 /* Assets.xcassets */,
 				0B36E5B1216666D9004057F2 /* LaunchScreen.storyboard */,
 				0B36E5B4216666D9004057F2 /* Info.plist */,
+				0BD9A43E2190EAA8009B3C28 /* CognitoConfig.plist */,
 			);
 			path = SouleCountrol;
 			sourceTree = "<group>";
@@ -139,6 +147,7 @@
 				0B36E5BC2166B687004057F2 /* AnalyticsVC.swift */,
 				0B36E5BE2166B696004057F2 /* SecurityVC.swift */,
 				0BD62747217FEFFF00BEFADF /* ArrivalHourVC.swift */,
+				0BD9A4422190F479009B3C28 /* LoginViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -289,6 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B36E5B3216666D9004057F2 /* LaunchScreen.storyboard in Resources */,
+				0BD9A43F2190EAA8009B3C28 /* CognitoConfig.plist in Resources */,
 				0B36E5B0216666D9004057F2 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -321,10 +331,28 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SouleCountrol/Pods-SouleCountrol-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AWSCognitoIdentityProvider/AWSCognitoIdentityProvider.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSCognitoIdentityProviderASF/AWSCognitoIdentityProviderASF.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSCore/AWSCore.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSEC2/AWSEC2.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSKinesis/AWSKinesis.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSKinesisVideo/AWSKinesisVideo.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSMobileAnalytics/AWSMobileAnalytics.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSPinpoint/AWSPinpoint.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSS3/AWSS3.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCognitoIdentityProvider.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCognitoIdentityProviderASF.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSEC2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSKinesis.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSKinesisVideo.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSMobileAnalytics.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSPinpoint.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSS3.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -360,8 +388,10 @@
 				0B36E5D821690BEE004057F2 /* HeaderView.swift in Sources */,
 				0B36E5CE2167F062004057F2 /* UIColor+hex.swift in Sources */,
 				0B864A63217E717200394CDC /* ArrivalHour.swift in Sources */,
+				0BD9A4432190F479009B3C28 /* LoginViewController.swift in Sources */,
 				0B36E5D02168FFBA004057F2 /* ThemeColors.swift in Sources */,
 				0B864A61217E6F9A00394CDC /* Bulb.swift in Sources */,
+				0BD9A4412190ECAC009B3C28 /* CognitoConfig.swift in Sources */,
 				0B52DCC1217002D400B2B486 /* UIButton+floating.swift in Sources */,
 				0B36E5BF2166B696004057F2 /* SecurityVC.swift in Sources */,
 				0BD62748217FEFFF00BEFADF /* ArrivalHourVC.swift in Sources */,
@@ -511,10 +541,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PX5B7972N5;
 				INFOPLIST_FILE = SouleCountrol/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Angel-Avila.SouleCountrol";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -530,10 +557,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PX5B7972N5;
 				INFOPLIST_FILE = SouleCountrol/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Angel-Avila.SouleCountrol";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
