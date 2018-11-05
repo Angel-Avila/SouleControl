@@ -40,7 +40,6 @@ class AnalyticsVC: GenericCollectionViewController<PersonCollectionViewCell, Per
     override func viewDidLoad() {
         view.backgroundColor = .white
         collectionViews = [arrivalHoursCollectionView]
-        items = [people]
         
         width = (screenWidth * 1) / 2
         height = AppDelegate.cellHeight * 2
