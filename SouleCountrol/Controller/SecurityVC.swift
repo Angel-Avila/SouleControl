@@ -23,19 +23,20 @@ class SecurityVC: UITableViewController {
     
 //    let addPersonPopup = TextPopup(title: "Nueva cita", description: "Agregue el título de su cita")
     
-    var people = [Person(name: "Ángel Ávila"),
-                  Person(name: "Sergio Chung")]
+    var people = [Person]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
         setupAddButton()
-        people.first!.image = #imageLiteral(resourceName: "angel")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.navigationItem.title = "Seguridad"
+        
+        people = TabBarController.people
+        tableView.reloadData()
     }
     
     override func viewDidLayoutSubviews() {

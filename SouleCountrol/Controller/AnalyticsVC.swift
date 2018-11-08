@@ -48,13 +48,15 @@ class AnalyticsVC: GenericCollectionViewController<PersonCollectionViewCell, Per
         super.viewDidLoad()
         
         setupViews()
-        downloadPeopleNamesFromBucket()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.navigationItem.title = "Dashboard"
         downloadInfoFromServer()
+        
+        items[0] = TabBarController.people
+        arrivalHoursCollectionView.reloadData()
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -70,7 +72,6 @@ class AnalyticsVC: GenericCollectionViewController<PersonCollectionViewCell, Per
     fileprivate func downloadInfoFromServer() {
         downloadBulbsInfo()
         downloadCamsInfo()
-        downloadArrivalHoursInfo()
     }
     
     fileprivate func downloadBulbsInfo() {
@@ -92,75 +93,7 @@ class AnalyticsVC: GenericCollectionViewController<PersonCollectionViewCell, Per
             self.camMinutesOnLabel.text = "Minutos encendida: " + String(sum)
         }
     }
-    
-    fileprivate func downloadArrivalHoursInfo() {
-        Database.instance.getAllArrivalHours { hours in
-            guard let hours = hours else { print("no rifa"); return }
-           
-            for p in self.items[0] {
-                p.hoursArrivedAt = hours.filter { $0.person == p.name }.map { $0.hour ?? 0 }
-                p.hoursArrivedAt = p.hoursArrivedAt.sorted { (a, b) -> Bool in
-                    return a > b
-                }
-            }
-        }
-    }
-    
-    fileprivate func downloadPeopleNamesFromBucket() {
-        let bucket = "facesiot"
         
-        let s3 = AWSS3.s3(forKey: "defaultKey")
-        
-        let listRequest: AWSS3ListObjectsRequest = AWSS3ListObjectsRequest()
-        listRequest.bucket = bucket
-        
-        s3.listObjects(listRequest).continueWith { (task) -> AnyObject? in
-            
-            for object in (task.result?.contents)! {
-                self.downloadImage(fromBucket: bucket, fileName: object.key)
-            }
-            
-            return nil
-        }
-    }
-    
-    fileprivate func downloadImage(fromBucket bucket: String, fileName: String?) {
-        
-        guard let fileName = fileName else { return }
-        
-        let transferManager = AWSS3TransferManager.default()
-        
-        let downloadingFileURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("temp.jpg")
-        
-        if let downloadRequest = AWSS3TransferManagerDownloadRequest(){
-            downloadRequest.bucket = bucket
-            downloadRequest.key = fileName
-            downloadRequest.downloadingFileURL = downloadingFileURL
-            
-            transferManager.download(downloadRequest).continueWith(executor: AWSExecutor.default(), block: { (task: AWSTask<AnyObject>) -> Any? in
-                if( task.error != nil){
-                    print(task.error!.localizedDescription)
-                    return nil
-                }
-                
-                print(task.result!)
-                
-                if let data = NSData(contentsOf: downloadingFileURL){
-                    DispatchQueue.main.async(execute: { () -> Void in
-                        if let img = UIImage(data: data as Data) {
-                            let name = fileName.components(separatedBy: ".").first!
-                            self.items[0].append(Person(name: name, image: img))
-                            self.collectionViews.first?.reloadData()
-                        } else {
-                            print("There was no image :(")
-                        }
-                    })
-                }
-                return nil
-            })
-        }
-    }
-    
     fileprivate func setupViews() {
         view.addSubview(scrollView)
         scrollView.fillSuperview()

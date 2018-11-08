@@ -20,8 +20,9 @@ class PersonTableViewCell: UITableViewCell {
             
             let lastArrival = Date(timeIntervalSince1970: last)
             let f = DateFormatter()
-            f.dateFormat = "hh:mm a dd/MM/yyyy"
-            detailLabel.text = "Última llegada: " + f.string(from: lastArrival)
+            f.locale = Locale(identifier: "es_MX")
+            f.dateFormat = "d MMMM"
+            detailLabel.text = "Última llegada: " + f.string(from: lastArrival).capitalized
         }
     }
     
