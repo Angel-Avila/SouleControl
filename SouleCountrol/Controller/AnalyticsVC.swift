@@ -53,7 +53,7 @@ class AnalyticsVC: GenericCollectionViewController<PersonCollectionViewCell, Per
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.navigationItem.title = "Dashboard"
-        downloadInfoFromServer()
+        setupInfoFromServer()
         
         items[0] = TabBarController.people
         arrivalHoursCollectionView.reloadData()
@@ -69,29 +69,25 @@ class AnalyticsVC: GenericCollectionViewController<PersonCollectionViewCell, Per
         present(nc, animated: true, completion: nil)
     }
     
-    fileprivate func downloadInfoFromServer() {
-        downloadBulbsInfo()
-        downloadCamsInfo()
+    fileprivate func setupInfoFromServer() {
+        setupBulbsInfo()
+        setupCamsInfo()
     }
     
-    fileprivate func downloadBulbsInfo() {
-        Database.instance.getAllBulbs { bulbs in
-            guard let bulbs = bulbs else { return }
-            
-            let minutes = bulbs.map { $0.minutesOn ?? 0 }
-            let sum = minutes.reduce(0, +)
-            self.bulbMinutesOnLabel.text = "Minutos encendidos: " + String(sum)
-        }
+    fileprivate func setupBulbsInfo() {
+        let bulbs = TabBarController.bulbs
+        
+        let minutes = bulbs.map { $0.minutesOn ?? 0 }
+        let sum = minutes.reduce(0, +)
+        self.bulbMinutesOnLabel.text = "Minutos encendidos: " + String(sum)
     }
     
-    fileprivate func downloadCamsInfo() {
-        Database.instance.getAllCams { cams in
-            guard let cams = cams else { return }
-            
-            let minutes = cams.map { $0.minutesOn ?? 0 }
-            let sum = minutes.reduce(0, +)
-            self.camMinutesOnLabel.text = "Minutos encendida: " + String(sum)
-        }
+    fileprivate func setupCamsInfo() {
+        let cams = TabBarController.cams
+        
+        let minutes = cams.map { $0.minutesOn ?? 0 }
+        let sum = minutes.reduce(0, +)
+        self.camMinutesOnLabel.text = "Minutos encendida: " + String(sum)
     }
         
     fileprivate func setupViews() {

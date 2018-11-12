@@ -8,7 +8,23 @@
 
 import Foundation
 
-class Bulb: Decodable {
+class Bulb: Device {
     var minutesOn: Int?
     var minutesLeft: Int?
+    
+    init(name: String = "", isOn: Bool = false) {
+        super.init(name: name, type: .light, isOn: isOn)
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.minutesOn = try container.decode(Int.self, forKey: .minutesOn)
+        self.minutesLeft = try container.decode(Int.self, forKey: .minutesLeft)
+        try super.init(from: decoder)
+    }
+    
+    private enum CodingKeys: String, CodingKey {
+        case minutesLeft
+        case minutesOn
+    }
 }

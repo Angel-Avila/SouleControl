@@ -13,6 +13,7 @@ enum DatabaseType: String {
     case Bulb = "/bulb"
     case ArrivalHour = "/arrivalHour"
     case Cam = "/cam"
+    case Door = "/door"
 }
 
 public class Database {
@@ -43,6 +44,10 @@ public class Database {
         getAll(object: Cam(), completion: completion)
     }
     
+    func getAllDoors(completion: ((_ doors: [Door]?) -> Void)?) {
+        getAll(object: Door(), completion: completion)
+    }
+    
     fileprivate func getAll<T: Decodable>(object: T, completion: ((_ things: [T]?) -> Void)?) {
         let typeStr: String!
         
@@ -52,6 +57,8 @@ public class Database {
             typeStr = DatabaseType.ArrivalHour.rawValue
         } else if object is Cam {
             typeStr = DatabaseType.Cam.rawValue
+        } else if object is Door {
+            typeStr = DatabaseType.Door.rawValue
         } else {
             typeStr = ""
         }

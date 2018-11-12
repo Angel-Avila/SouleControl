@@ -22,7 +22,7 @@ class DeviceCell: GenericCollectionViewCell<Device> {
             case .camera:
                 stateText = item.isOn ? CameraState.on.rawValue : CameraState.off.rawValue
             default:
-                stateText = item.state
+                stateText = "-"
             }
             
             nameLabel.text = item.name

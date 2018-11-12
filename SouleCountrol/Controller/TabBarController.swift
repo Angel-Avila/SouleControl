@@ -13,6 +13,10 @@ import AWSS3
 class TabBarController: UITabBarController {
 
     static var people = [Person]()
+    static var bulbs = [Bulb]()
+    static var cams = [Cam]()
+    static var doors = [Door]()
+    static var arrivalHours = [ArrivalHour]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +37,15 @@ class TabBarController: UITabBarController {
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1500)) {
             self.downloadPeopleNamesFromBucket()
         }
+        
+        downloadAllArraysFromServer()
+    }
+    
+    fileprivate func downloadAllArraysFromServer() {
+        downloadCamsInfo()
+        downloadBulbsInfo()
+        downloadDoorsInfo()
+        downloadArrivalHoursInfo()
     }
     
     fileprivate func downloadPeopleNamesFromBucket() {
@@ -92,14 +105,29 @@ class TabBarController: UITabBarController {
     
     fileprivate func downloadArrivalHoursInfo() {
         Database.instance.getAllArrivalHours { hours in
-            guard let hours = hours else { print("no rifa"); return }
-            
-            for p in TabBarController.people {
-                p.hoursArrivedAt = hours.filter { $0.person == p.name }.map { $0.hour ?? 0 }
-                p.hoursArrivedAt = p.hoursArrivedAt.sorted { (a, b) -> Bool in
-                    return a > b
-                }
-            }
+            guard let hours = hours else { return }
+            TabBarController.arrivalHours = hours
+        }
+    }
+    
+    fileprivate func downloadBulbsInfo() {
+        Database.instance.getAllBulbs { bulbs in
+            guard let bulbs = bulbs else { return }
+            TabBarController.bulbs = bulbs
+        }
+    }
+    
+    fileprivate func downloadCamsInfo() {
+        Database.instance.getAllCams { cams in
+            guard let cams = cams else { return }
+            TabBarController.cams = cams
+        }
+    }
+    
+    fileprivate func downloadDoorsInfo() {
+        Database.instance.getAllDoors { doors in
+            guard let doors = doors else { return }
+            TabBarController.doors = doors
         }
     }
 }

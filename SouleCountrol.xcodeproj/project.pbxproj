@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B1ADFA821990FDF00ED4BCE /* Door.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1ADFA721990FDF00ED4BCE /* Door.swift */; };
 		0B36E5A9216666D8004057F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B36E5A8216666D8004057F2 /* AppDelegate.swift */; };
 		0B36E5AB216666D8004057F2 /* DevicesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B36E5AA216666D8004057F2 /* DevicesVC.swift */; };
 		0B36E5B0216666D9004057F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B36E5AF216666D9004057F2 /* Assets.xcassets */; };
@@ -47,6 +48,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B1ADFA721990FDF00ED4BCE /* Door.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Door.swift; sourceTree = "<group>"; };
 		0B36E5A5216666D8004057F2 /* SouleCountrol.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SouleCountrol.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B36E5A8216666D8004057F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0B36E5AA216666D8004057F2 /* DevicesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesVC.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 				0B864A60217E6F9A00394CDC /* Bulb.swift */,
 				0B864A62217E717200394CDC /* ArrivalHour.swift */,
 				0B864A64217E71BA00394CDC /* Cam.swift */,
+				0B1ADFA721990FDF00ED4BCE /* Door.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -386,6 +389,7 @@
 				0B36E5D4216901B8004057F2 /* UIView+anchors.swift in Sources */,
 				0B36E5C22166CA56004057F2 /* GenericCollectionViewController.swift in Sources */,
 				0B36E5D821690BEE004057F2 /* HeaderView.swift in Sources */,
+				0B1ADFA821990FDF00ED4BCE /* Door.swift in Sources */,
 				0B36E5CE2167F062004057F2 /* UIColor+hex.swift in Sources */,
 				0B864A63217E717200394CDC /* ArrivalHour.swift in Sources */,
 				0BD9A4432190F479009B3C28 /* LoginViewController.swift in Sources */,
@@ -541,7 +545,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PX5B7972N5;
 				INFOPLIST_FILE = SouleCountrol/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Angel-Avila.SouleCountrol";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -557,7 +564,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PX5B7972N5;
 				INFOPLIST_FILE = SouleCountrol/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Angel-Avila.SouleCountrol";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;

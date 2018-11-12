@@ -10,19 +10,15 @@ import UIKit
 
 class DevicesVC: GenericCollectionViewController<DeviceCell, Device>, UIGestureRecognizerDelegate {
 
-    let devices = [[Device(name: "Foco 1", type: .light, isOn: true),
+    let devices: [[Device]] = [[Device(name: "Foco 1", type: .light, isOn: true),
                     Device(name: "Foco 2", type: .light)
                     ],
                    
                    [Device(name: "Foco", type: .light),
-                    Device(name: "Termómetro", type: .extra, state: "28°C")
+                    Device(name: "Termómetro", type: .extra, isOn: true)
                     ],
                    
-                   [Device(name: "Cámara", type: .camera, isOn: true),
-                    Device(name: "Puerta principal", type: .door),
-                    Device(name: "Foco exterior", type: .light, isOn: true),
-                    Device(name: "Foco interior", type: .light)
-                    ],
+                   [],
                    
                    [Device(name: "Puerta del cuarto", type: .door, isOn: true),
                     Device(name: "Foco", type: .light)]]

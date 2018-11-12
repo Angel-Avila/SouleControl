@@ -30,18 +30,21 @@ enum LightState: String {
     case off = "Apagado"
 }
 
-class Device {
+class Device: Decodable {
     
     var name: String!
     var type: DeviceType!
-    var state: String!
     var isOn: Bool!
     
-    init(name: String, type: DeviceType, state: String = "-", isOn: Bool = false) {
+    init(name: String, type: DeviceType, isOn: Bool = false) {
         self.name = name
         self.type = type
-        self.state = state
         self.isOn = isOn
+    }
+    
+    private enum CodingKeys: String, CodingKey {
+        case name
+        case isOn
     }
     
 }
