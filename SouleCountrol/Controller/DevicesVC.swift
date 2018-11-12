@@ -10,7 +10,7 @@ import UIKit
 
 class DevicesVC: GenericCollectionViewController<DeviceCell, Device>, UIGestureRecognizerDelegate {
 
-    let devices: [[Device]] = [[Device(name: "Foco 1", type: .light, isOn: true),
+    var devices: [[Device]] = [[Device(name: "Foco 1", type: .light, isOn: true),
                     Device(name: "Foco 2", type: .light)
                     ],
                    
@@ -47,11 +47,28 @@ class DevicesVC: GenericCollectionViewController<DeviceCell, Device>, UIGestureR
         super.viewDidLoad()
   
         setupViews()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1100)) {
+            self.setupLivingRoomFromServer()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.navigationItem.title = "Dispositivos"
+        setupLivingRoomFromServer()
+    }
+    
+    fileprivate func setupLivingRoomFromServer() {
+        var devs = [Device]()
+        devs.append(contentsOf: TabBarController.cams)
+        devs.append(contentsOf: TabBarController.bulbs)
+        devs.append(contentsOf: TabBarController.doors)
+        
+        devices[2] = devs
+        items = devices
+        
+        entranceCollectionView.reloadData()
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

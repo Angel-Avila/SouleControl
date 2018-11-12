@@ -21,6 +21,7 @@ class Bulb: Device {
         self.minutesOn = try container.decode(Int.self, forKey: .minutesOn)
         self.minutesLeft = try container.decode(Int.self, forKey: .minutesLeft)
         try super.init(from: decoder)
+        self.type = .light
     }
     
     private enum CodingKeys: String, CodingKey {

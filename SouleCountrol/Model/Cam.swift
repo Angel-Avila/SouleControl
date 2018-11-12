@@ -20,6 +20,7 @@ class Cam: Device {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.minutesOn = try container.decode(Int.self, forKey: .minutesOn)
         try super.init(from: decoder)
+        self.type = .camera
     }
     
     private enum CodingKeys: String, CodingKey {

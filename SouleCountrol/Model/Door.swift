@@ -16,6 +16,6 @@ class Door: Device {
     
     required init(from decoder: Decoder) throws {
         try super.init(from: decoder)
+        self.type = .door
     }
 }
-
