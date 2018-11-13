@@ -90,6 +90,14 @@ class DevicesVC: GenericCollectionViewController<DeviceCell, Device>, UIGestureR
             Database.instance.turn(device as! Cam, on: device.isOn) { success in
                 print("Success:", success)
             }
+        } else if device is Bulb {
+            Database.instance.turn(device as! Bulb, on: device.isOn) { success in
+                print("Success:", success)
+            }
+        } else if device is Door {
+            Database.instance.turn(device as! Door, on: device.isOn) { success in
+                print("Success:", success)
+            }
         }
     }
     

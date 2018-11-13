@@ -79,6 +79,22 @@ public class Database {
         update(cam, parameters: parameters, completion: completion)
     }
     
+    func turn(_ bulb: Bulb, on: Bool, completion: ((Bool) -> Void)?) {
+        let parameters: Parameters = ["minutesOn": bulb.minutesOn ?? 0,
+                                      "minutesLeft": bulb.minutesLeft ?? 0,
+                                      "isOn": on,
+                                      "name": bulb.name]
+        
+        update(bulb, parameters: parameters, completion: completion)
+    }
+    
+    func turn(_ door: Door, on: Bool, completion: ((Bool) -> Void)?) {
+        let parameters: Parameters = ["isOn": on,
+                                      "name": door.name]
+        
+        update(door, parameters: parameters, completion: completion)
+    }
+    
     fileprivate func update(_ object: Device, parameters: [String: Any], completion: ((Bool) -> Void)?) {
         
         let url = URL(string: getUrlStr(from: object) + object._id)!
