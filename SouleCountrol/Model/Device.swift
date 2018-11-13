@@ -32,11 +32,13 @@ enum LightState: String {
 
 class Device: Decodable {
     
+    let _id: String!
     var name: String!
     var type: DeviceType!
     var isOn: Bool!
     
-    init(name: String, type: DeviceType, isOn: Bool = false) {
+    init(_id: String = "", name: String, type: DeviceType, isOn: Bool = false) {
+        self._id = _id
         self.name = name
         self.type = type
         self.isOn = isOn
@@ -45,6 +47,7 @@ class Device: Decodable {
     private enum CodingKeys: String, CodingKey {
         case name
         case isOn
+        case _id
     }
     
 }

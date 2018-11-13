@@ -81,6 +81,16 @@ class DevicesVC: GenericCollectionViewController<DeviceCell, Device>, UIGestureR
         cell.updateUI()
         
         collectionView.reloadItems(at: [indexPath])
+        
+        if collectionView != entranceCollectionView {
+            return
+        }
+        
+        if device is Cam {
+            Database.instance.turn(device as! Cam, on: device.isOn) { success in
+                print("Success:", success)
+            }
+        }
     }
     
     fileprivate func setupViews() {

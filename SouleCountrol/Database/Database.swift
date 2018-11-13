@@ -10,10 +10,10 @@ import UIKit
 import Alamofire
 
 enum DatabaseType: String {
-    case Bulb = "/bulb"
-    case ArrivalHour = "/arrivalHour"
-    case Cam = "/cam"
-    case Door = "/door"
+    case Bulb = "/bulb/"
+    case ArrivalHour = "/arrivalHour/"
+    case Cam = "/cam/"
+    case Door = "/door/"
 }
 
 public class Database {
@@ -49,21 +49,8 @@ public class Database {
     }
     
     fileprivate func getAll<T: Decodable>(object: T, completion: ((_ things: [T]?) -> Void)?) {
-        let typeStr: String!
         
-        if object is Bulb {
-            typeStr = DatabaseType.Bulb.rawValue
-        } else if object is ArrivalHour {
-            typeStr = DatabaseType.ArrivalHour.rawValue
-        } else if object is Cam {
-            typeStr = DatabaseType.Cam.rawValue
-        } else if object is Door {
-            typeStr = DatabaseType.Door.rawValue
-        } else {
-            typeStr = ""
-        }
-        
-        let url = URL(string: BASE_URL + typeStr)!
+        let url = URL(string: getUrlStr(from: object))!
         
         Alamofire.request(url, method: .get, encoding: JSONEncoding.default).responseJSON { response in
             
@@ -82,5 +69,46 @@ public class Database {
                 print("Error: ", jsonErr)
             }
         }
+    }
+    
+    func turn(_ cam: Cam, on: Bool, completion: ((Bool) -> Void)?) {
+        let parameters: Parameters = ["minutesOn": cam.minutesOn ?? 0,
+                                      "isOn": on,
+                                      "name": cam.name]
+        
+        update(cam, parameters: parameters, completion: completion)
+    }
+    
+    fileprivate func update(_ object: Device, parameters: [String: Any], completion: ((Bool) -> Void)?) {
+        
+        let url = URL(string: getUrlStr(from: object) + object._id)!
+        
+        Alamofire.request(url, method: .put, parameters: parameters, encoding: JSONEncoding.default).responseJSON { response in
+            
+            if response.data != nil {
+                completion?(true)
+                return
+            }
+            
+            completion?(false)
+        }
+    }
+    
+    fileprivate func getUrlStr<T>(from object: T) -> String {
+        let typeStr: String!
+        
+        if object is Bulb {
+            typeStr = DatabaseType.Bulb.rawValue
+        } else if object is ArrivalHour {
+            typeStr = DatabaseType.ArrivalHour.rawValue
+        } else if object is Cam {
+            typeStr = DatabaseType.Cam.rawValue
+        } else if object is Door {
+            typeStr = DatabaseType.Door.rawValue
+        } else {
+            typeStr = ""
+        }
+        
+        return  BASE_URL + typeStr
     }
 }
