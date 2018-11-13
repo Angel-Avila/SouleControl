@@ -72,6 +72,7 @@ class AnalyticsVC: GenericCollectionViewController<PersonCollectionViewCell, Per
     fileprivate func setupInfoFromServer() {
         setupBulbsInfo()
         setupCamsInfo()
+        setupArrivalHoursInfo()
     }
     
     fileprivate func setupBulbsInfo() {
@@ -88,6 +89,17 @@ class AnalyticsVC: GenericCollectionViewController<PersonCollectionViewCell, Per
         let minutes = cams.map { $0.minutesOn ?? 0 }
         let sum = minutes.reduce(0, +)
         self.camMinutesOnLabel.text = "Minutos encendida: " + String(sum)
+    }
+    
+    fileprivate func setupArrivalHoursInfo() {
+        let hours = TabBarController.arrivalHours
+        
+        for p in TabBarController.people {
+            p.hoursArrivedAt = hours.filter { $0.person == p.name }.map { $0.hour ?? 0 }
+            p.hoursArrivedAt = p.hoursArrivedAt.sorted { (a, b) -> Bool in
+                return a > b
+            }
+        }
     }
         
     fileprivate func setupViews() {
