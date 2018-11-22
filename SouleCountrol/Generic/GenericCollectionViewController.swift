@@ -22,7 +22,6 @@ class GenericCollectionViewController<T: GenericCollectionViewCell<U>, U>: UIVie
     var height: CGFloat!
     var inset: CGFloat!
     
-    
     init(screenWidth: CGFloat) {
         self.screenWidth = screenWidth
         width = screenWidth / 2

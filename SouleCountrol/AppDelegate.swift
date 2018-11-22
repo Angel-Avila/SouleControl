@@ -10,6 +10,7 @@ import UIKit
 import AWSCore
 import AWSCognitoIdentityProvider
 import AWSS3
+//import AWSKinesisVideo
 
 let userPoolID = "us-west-2_vQOuGdjC1"
 
@@ -54,6 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         AWSServiceManager.default()?.defaultServiceConfiguration = serviceConfiguration
         AWSS3.register(with: serviceConfiguration, forKey: "defaultKey")
+        //AWSKinesisVideo.register(with: serviceConfiguration, forKey: "defaultKey")
         
         let cognitoConfiguration:AWSCognitoIdentityUserPoolConfiguration = AWSCognitoIdentityUserPoolConfiguration(clientId: clientId, clientSecret: nil, poolId: poolId)
         AWSCognitoIdentityUserPool.register(with: serviceConfiguration, userPoolConfiguration: cognitoConfiguration, forKey: userPoolID)

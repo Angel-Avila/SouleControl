@@ -30,7 +30,10 @@ class TabBarController: UITabBarController {
         let securityVC = SecurityVC()
         securityVC.tabBarItem = UITabBarItem(title: "Seguridad", image: #imageLiteral(resourceName: "security"), tag: 2)
         
-        let tabList = [devicesVC, analyticsVC, securityVC]
+        let cameraVC = CameraVC()
+        cameraVC.tabBarItem = UITabBarItem(title: "Cámara", image: #imageLiteral(resourceName: "cameraTab"), tag: 3)
+        
+        let tabList = [devicesVC, analyticsVC, securityVC, cameraVC]
         
         viewControllers = tabList
         

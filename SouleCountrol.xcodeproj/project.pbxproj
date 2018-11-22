@@ -36,6 +36,8 @@
 		0B864A61217E6F9A00394CDC /* Bulb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B864A60217E6F9A00394CDC /* Bulb.swift */; };
 		0B864A63217E717200394CDC /* ArrivalHour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B864A62217E717200394CDC /* ArrivalHour.swift */; };
 		0B864A65217E71BA00394CDC /* Cam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B864A64217E71BA00394CDC /* Cam.swift */; };
+		0BD522DC21A4A08900E06E85 /* CameraVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD522DB21A4A08900E06E85 /* CameraVC.swift */; };
+		0BD522DE21A4A18600E06E85 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 0BD522DD21A4A18600E06E85 /* index.html */; };
 		0BD62742217FAE2B00BEFADF /* PersonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD62741217FAE2B00BEFADF /* PersonCollectionViewCell.swift */; };
 		0BD62744217FEEBB00BEFADF /* GenericTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD62743217FEEBB00BEFADF /* GenericTableViewCell.swift */; };
 		0BD62746217FEEE400BEFADF /* GenericTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD62745217FEEE400BEFADF /* GenericTableViewController.swift */; };
@@ -79,6 +81,8 @@
 		0B864A60217E6F9A00394CDC /* Bulb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bulb.swift; sourceTree = "<group>"; };
 		0B864A62217E717200394CDC /* ArrivalHour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrivalHour.swift; sourceTree = "<group>"; };
 		0B864A64217E71BA00394CDC /* Cam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cam.swift; sourceTree = "<group>"; };
+		0BD522DB21A4A08900E06E85 /* CameraVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraVC.swift; sourceTree = "<group>"; };
+		0BD522DD21A4A18600E06E85 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		0BD62741217FAE2B00BEFADF /* PersonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCollectionViewCell.swift; sourceTree = "<group>"; };
 		0BD62743217FEEBB00BEFADF /* GenericTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTableViewCell.swift; sourceTree = "<group>"; };
 		0BD62745217FEEE400BEFADF /* GenericTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTableViewController.swift; sourceTree = "<group>"; };
@@ -125,18 +129,15 @@
 		0B36E5A7216666D8004057F2 /* SouleCountrol */ = {
 			isa = PBXGroup;
 			children = (
+				0B36E5B4216666D9004057F2 /* Info.plist */,
+				0B36E5A8216666D8004057F2 /* AppDelegate.swift */,
+				0BD522DF21A4A40C00E06E85 /* Res */,
 				0B864A5D217E6BC800394CDC /* Database */,
 				0B36E5CC2167EFC1004057F2 /* Utils */,
 				0B36E5C52166CC21004057F2 /* Generic */,
 				0B36E5C02166B6B3004057F2 /* Controller */,
 				0B36E5C62166CC4C004057F2 /* View */,
 				0B36E5C92166CCD2004057F2 /* Model */,
-				0B36E5A8216666D8004057F2 /* AppDelegate.swift */,
-				0BD9A4402190ECAC009B3C28 /* CognitoConfig.swift */,
-				0B36E5AF216666D9004057F2 /* Assets.xcassets */,
-				0B36E5B1216666D9004057F2 /* LaunchScreen.storyboard */,
-				0B36E5B4216666D9004057F2 /* Info.plist */,
-				0BD9A43E2190EAA8009B3C28 /* CognitoConfig.plist */,
 			);
 			path = SouleCountrol;
 			sourceTree = "<group>";
@@ -149,6 +150,7 @@
 				0B36E5BC2166B687004057F2 /* AnalyticsVC.swift */,
 				0B36E5BE2166B696004057F2 /* SecurityVC.swift */,
 				0BD62747217FEFFF00BEFADF /* ArrivalHourVC.swift */,
+				0BD522DB21A4A08900E06E85 /* CameraVC.swift */,
 				0BD9A4422190F479009B3C28 /* LoginViewController.swift */,
 			);
 			path = Controller;
@@ -168,6 +170,7 @@
 		0B36E5C62166CC4C004057F2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0B36E5B1216666D9004057F2 /* LaunchScreen.storyboard */,
 				0BD62740217FAE0C00BEFADF /* Simple */,
 				0B36E5C72166CCC1004057F2 /* DeviceCell.swift */,
 				0B52DCC6217008F900B2B486 /* PersonTableViewCell.swift */,
@@ -179,6 +182,7 @@
 		0B36E5C92166CCD2004057F2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0BD9A4402190ECAC009B3C28 /* CognitoConfig.swift */,
 				0B36E5CA2166CCE9004057F2 /* Device.swift */,
 				0B52DCC42170082B00B2B486 /* Person.swift */,
 				0B864A60217E6F9A00394CDC /* Bulb.swift */,
@@ -209,6 +213,16 @@
 				0B864A5E217E6D4800394CDC /* Database.swift */,
 			);
 			path = Database;
+			sourceTree = "<group>";
+		};
+		0BD522DF21A4A40C00E06E85 /* Res */ = {
+			isa = PBXGroup;
+			children = (
+				0B36E5AF216666D9004057F2 /* Assets.xcassets */,
+				0BD522DD21A4A18600E06E85 /* index.html */,
+				0BD9A43E2190EAA8009B3C28 /* CognitoConfig.plist */,
+			);
+			path = Res;
 			sourceTree = "<group>";
 		};
 		0BD62740217FAE0C00BEFADF /* Simple */ = {
@@ -301,6 +315,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B36E5B3216666D9004057F2 /* LaunchScreen.storyboard in Resources */,
+				0BD522DE21A4A18600E06E85 /* index.html in Resources */,
 				0BD9A43F2190EAA8009B3C28 /* CognitoConfig.plist in Resources */,
 				0B36E5B0216666D9004057F2 /* Assets.xcassets in Resources */,
 			);
@@ -340,6 +355,7 @@
 				"${BUILT_PRODUCTS_DIR}/AWSEC2/AWSEC2.framework",
 				"${BUILT_PRODUCTS_DIR}/AWSKinesis/AWSKinesis.framework",
 				"${BUILT_PRODUCTS_DIR}/AWSKinesisVideo/AWSKinesisVideo.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSKinesisVideoArchivedMedia/AWSKinesisVideoArchivedMedia.framework",
 				"${BUILT_PRODUCTS_DIR}/AWSMobileAnalytics/AWSMobileAnalytics.framework",
 				"${BUILT_PRODUCTS_DIR}/AWSPinpoint/AWSPinpoint.framework",
 				"${BUILT_PRODUCTS_DIR}/AWSS3/AWSS3.framework",
@@ -353,6 +369,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSEC2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSKinesis.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSKinesisVideo.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSKinesisVideoArchivedMedia.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSMobileAnalytics.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSPinpoint.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSS3.framework",
@@ -372,6 +389,7 @@
 			files = (
 				0B36E5D221690150004057F2 /* UIView+shadow.swift in Sources */,
 				0BD6274A217FF04000BEFADF /* StringCell.swift in Sources */,
+				0BD522DC21A4A08900E06E85 /* CameraVC.swift in Sources */,
 				0B36E5BB2166698A004057F2 /* TabBarController.swift in Sources */,
 				0B36E5DC21691C4A004057F2 /* UIView+gradient.swift in Sources */,
 				0B36E5BD2166B687004057F2 /* AnalyticsVC.swift in Sources */,
@@ -545,10 +563,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PX5B7972N5;
 				INFOPLIST_FILE = SouleCountrol/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Angel-Avila.SouleCountrol";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -564,10 +579,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PX5B7972N5;
 				INFOPLIST_FILE = SouleCountrol/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Angel-Avila.SouleCountrol";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;

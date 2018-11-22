@@ -37,10 +37,14 @@ class DevicesVC: GenericCollectionViewController<DeviceCell, Device>, UIGestureR
     
     let interItemSpacing: CGFloat = 32
     
+    let background = UIColor(white: 1, alpha: 1)
+    
     override func viewDidLoad() {
-        view.backgroundColor = .white
+        view.backgroundColor = background
         
         collectionViews = [livingRoomCollectionView, kitchenCollectionView, entranceCollectionView, bedroomCollectionView]
+        
+        collectionViews.forEach { $0.backgroundColor = background }
         
         items = devices
         
