@@ -11,6 +11,8 @@ PODS:
     - AWSCore (= 2.6.29)
   - AWSKinesisVideo (2.6.29):
     - AWSCore (= 2.6.29)
+  - AWSKinesisVideoArchivedMedia (2.6.29):
+    - AWSCore (= 2.6.29)
   - AWSMobileAnalytics (2.6.29):
     - AWSCore (= 2.6.29)
   - AWSPinpoint (2.6.29):
@@ -24,6 +26,7 @@ DEPENDENCIES:
   - AWSEC2
   - AWSKinesis
   - AWSKinesisVideo
+  - AWSKinesisVideoArchivedMedia
   - AWSMobileAnalytics
   - AWSPinpoint
   - AWSS3
@@ -37,6 +40,7 @@ SPEC REPOS:
     - AWSEC2
     - AWSKinesis
     - AWSKinesisVideo
+    - AWSKinesisVideoArchivedMedia
     - AWSMobileAnalytics
     - AWSPinpoint
     - AWSS3
@@ -49,10 +53,11 @@ SPEC CHECKSUMS:
   AWSEC2: e216dd90df00ec655e5225575b8ab5dc96761e10
   AWSKinesis: b36914d185b84a805c41c088c195a6c91e804f75
   AWSKinesisVideo: e53ea95d7560d6eb21d53497481b83d73bec6ee4
+  AWSKinesisVideoArchivedMedia: 087c2afd66f39cde217a22a6d5f4c9a3ef05c830
   AWSMobileAnalytics: fd2e50b6d90a23d0375e6dbe8b087b5758e802fb
   AWSPinpoint: acdb2b9ffb5f115ced6c3d1e90e94d1e90690d8b
   AWSS3: f290faf13e491ff916715cf3e1a872719b114512
 
-PODFILE CHECKSUM: a44cf8e8750bc63d15d26304cfeecaa6826a7fea
+PODFILE CHECKSUM: 45a58a1c51b4a66d9078e1ffcc68f4af0ca918dc
 
 COCOAPODS: 1.5.3

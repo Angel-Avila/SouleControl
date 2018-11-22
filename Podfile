@@ -14,5 +14,6 @@ target 'SouleCountrol' do
   pod 'AWSKinesisVideo'
   pod 'AWSCognitoIdentityProvider'
   pod 'AWSPinpoint'
+  pod 'AWSKinesisVideoArchivedMedia'
 
 end
